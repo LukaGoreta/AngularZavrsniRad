@@ -1,0 +1,28 @@
+<div class="container">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">Završni rad</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Početna</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/kategorije">Kategorije</a></li>
+      <li routerLinkActive="active"><a routerLink="/unosOglasa" *ngIf="isLoggedIn">Kreiraj oglas</a></li>
+    </ul>
+<!--    <form class="navbar-form navbar-left" action="/action_page.php">-->
+<!--      <div class="form-group">-->
+<!--        <input type="text" class="form-control" placeholder="Pretraži oglas">-->
+<!--      </div>-->
+<!--      <button routerLink="trazilica" class="btn btn-default" type="submit">-->
+<!--        <i class="glyphicon glyphicon-search"></i>-->
+<!--      </button>-->
+<!--    </form>-->
+    <ul class="nav navbar-nav navbar-right">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/login" *ngIf="!isLoggedIn">Prijavite se</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/registracija" *ngIf="!isLoggedIn">Registracija</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/mojiOglasi" *ngIf="isLoggedIn">Moji oglasi</a></li>
+      <li><a *ngIf="isLoggedIn" routerLink="#" (click)="logoutUser()">Odjava</a></li>
+    </ul>
+  </div>
+</nav>
+</div>

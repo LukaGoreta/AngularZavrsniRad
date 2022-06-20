@@ -1,0 +1,29 @@
+<form (ngSubmit)="submitForm(f)" #f="ngForm">
+  <div class="container" style="min-height: 800px;">
+    <div class="container">
+      <div class="alert alert-danger" *ngIf="error != null">
+        <p>{{error}}</p>
+      </div>
+
+      <div class="alert alert-success" *ngIf="success">
+        <p>{{success}}</p>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>email</mat-label>
+          <input ngModel name="email" email matInput required>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>password</mat-label>
+          <input ngModel name="password" type="password" matInput required minlength="6">
+        </mat-form-field>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!f.valid" class="btn btn-dark"><i class="fa fa-database"></i> Registriraj se</button>
+  </div>
+</form>
+

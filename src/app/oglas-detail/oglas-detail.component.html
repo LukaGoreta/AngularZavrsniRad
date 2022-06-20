@@ -1,0 +1,35 @@
+<!--<p>oglas-detail works!</p>-->
+<!--id je {{naziv}}-->
+<div class="container" style="background-color: #dbe0ff; max-width: 1000px; margin-top: 40px;">
+    <div class="row">
+      <h1>
+      {{odabraniOglas.naslov}}
+      </h1>
+    </div>
+
+    <div class="row align-items-center">
+
+        <img class="center"
+          [src]="tmpSlikaOglasa"
+          alt="" class="img-responsive" style="">
+
+    </div>
+
+    <div class="row">
+      <output>
+        {{odabraniOglas.opis}}
+      </output>
+    </div>
+
+    <div class="row">
+      {{odabraniOglas.lokacija}}
+    </div>
+
+    <div class="row">
+      {{odabraniOglas.telefon}}
+    </div>
+
+    <div class="row">
+      {{odabraniOglas.imeProdavaca}}
+    </div>
+</div>

@@ -1,0 +1,82 @@
+
+<form (ngSubmit)="submitForm(f)" #f="ngForm">
+<div class="container" style="background-color: lightgrey" style="min-height: 800px; max-width: 900px; margin-bottom: 30px;">
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Naslov</mat-label>
+      <input ngModel name="naslov" matInput required>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Opis</mat-label>
+      <textarea rows="10" ngModel name="opis" matInput required></textarea>
+    </mat-form-field>
+  </div>
+
+
+  <div class="row">
+    <mat-form-field appearance="fill">
+      <mat-label>Kategorija</mat-label>
+      <mat-select ngModel name="kategorijaId" required>
+        <mat-option *ngFor="let kategorija of sveKategorije" [value]="kategorija.idKategorije">
+          {{kategorija.nazivKategorije}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Cijena oglasa</mat-label>
+      <input ngModel matInput name="cijena" required>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Broj mobitela</mat-label>
+      <input name="telefon" ngModel  matInput required>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Ime</mat-label>
+      <input ngModel name="imeProdavaca" matInput required>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input name="mail" ngModel required matInput  email #email="ngModel">
+      <span class="help-block" *ngIf="!email.valid && email.touched">Potreban je dobar mail.</span>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Lokacija</mat-label>
+      <input ngModel name="lokacija" matInput required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+
+    <button mat-raised-button color="primary" (click)="fileInput.click()" type="button">Slika</button>
+
+    <input type="file" accept="image/*" (change)="onSelectFile($event)" #fileInput style="display: none">
+
+    <p *ngIf="imgURL">Odabrana slika:</p>
+    <img [src]="imgURL" height="200" *ngIf="imgURL" >
+  </div>
+<hr>
+  <button mat-raised-button color="accent" [disabled]="!f.valid || !imgURL" type="submit">Submit</button>
+</div>
+
+</form>
+
+<!--{"naslov":"test","opis":"opis","cijena":"54322435","telefon":"3077493","mail":"lukag94@gmail.com"}-->
