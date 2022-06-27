@@ -51,7 +51,7 @@ constructor(private http: HttpClient) {}
           }
           switch (errorRes.error.error.message) {
             case 'EMAIL_EXISTS':
-              errorMessage = 'This email exists already';
+              errorMessage = 'Ovaj email se već koristi!';
           }
           return throwError(errorMessage);
         })
@@ -108,12 +108,14 @@ constructor(private http: HttpClient) {}
           // @ts-ignore
           const expirationDate = new Date(new Date().getTime() + resData.expiresIn * 1000);
           const user = new User(resData.email, resData.localId, resData.idToken, expirationDate);
-          console.log(user)
+
           this.user.next(user);
 
           // @ts-ignore
           this.autoLogout(resData.expiresIn*1000);
+
           localStorage.setItem('userData', JSON.stringify(user));
+
         })
       );
   }

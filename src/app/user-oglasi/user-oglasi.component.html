@@ -1,26 +1,36 @@
-
-<div class="container" style="padding-top: 20Px;border-bottom: 1px solid black;">
-  <div class="row" *ngFor="let oglas of oglasiUsera"
-       style="background-color: white; padding-top: 20px; margin-top: 10px;
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;"
+<div class="container" style="padding-top: 20Px;border-bottom: 1px solid black; min-height: 801px;">
+  <div id="rowid" class="row" *ngFor="let oglas of oglasiUsera"
+       style="padding-top: 20px; margin-top: 10px;
+      "
   >
-    <div class="col-lg-3 col-md-3 col-sm-12" style="height: 150px;">
-      <div class="row">
-      <span class="pull-left" style="position: absolute; left: 0px;">
-        <img
-          [src]="oglas.imagePath"
-          alt="slika" class="img-responsive" style="max-height: 150px;">
-      </span>
+    <div  class="col-lg-3 col-md-3 col-sm-12" style="min-height: 200px">
+      <div class="row" id="slika">
+        <span class="pull-left" style="position: absolute; left: 0px;">
+          <a [routerLink]="[oglas.oglasId]">
+          <img
+            [src]="oglas.imagePath"
+            alt="omg" class="img-responsive" >
+          </a>
+        </span>
       </div>
     </div>
-    <div class="col-lg-7 col-md-12 col-sm-12" style="height:100px;">
+    <div id="opis" class="col-lg-7 col-md-12 col-sm-12" style="min-height: 200px">
+      <a [routerLink]="[oglas.oglasId]" style="color: #1787ae">
+        <h2 style="position:center;"> {{oglas.naslov}}</h2>
+      </a>
+
       <p>{{oglas.opis}}</p>
+      <p>Prodavač: {{oglas.imeProdavaca}}</p>
+      <p>Telefon: {{oglas.telefon}}</p>
+      <p>Lokacija: {{oglas.lokacija}}</p>
     </div>
-    <div>
+
+    <div class="col-lg-2 col-md-12 col-sm-12" style="min-height: 50px">
       <button mat-raised-button color="warn" (click)="deleteOglas(oglas.oglasId)" type="submit">Obriši oglas</button>
     </div>
+
   </div>
 </div>
+
+
 

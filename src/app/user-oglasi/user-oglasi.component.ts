@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {OglasService} from "../oglas.service";
 import {Oglas} from "../oglas/oglas";
 import {AuthService} from "../auth.service";
-import {ActivatedRoute, Data, Params} from "@angular/router";
+import {ActivatedRoute, Data, Params, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -14,9 +14,9 @@ export class UserOglasiComponent implements OnInit, OnDestroy{
   paramsSubscription : Subscription;
 
   oglasiUsera : Oglas[] = [];
-  userToken: string;
 
-  constructor(private oglasService:OglasService,private authService:AuthService,private route: ActivatedRoute) {
+  constructor(private oglasService:OglasService,private authService:AuthService,private route: ActivatedRoute,
+              private router: Router) {
     this.paramsSubscription = this.route.params.subscribe();
   }
 
@@ -24,7 +24,6 @@ export class UserOglasiComponent implements OnInit, OnDestroy{
     this.route.data.subscribe(
       (data: Data) => {
         this.oglasiUsera = data['userOglasi'];
-        console.log("halo "+this.oglasiUsera);
       }
     );
 
@@ -43,15 +42,14 @@ export class UserOglasiComponent implements OnInit, OnDestroy{
 
   deleteOglas(oglasId: number){
     console.log(oglasId);
-    this.oglasService.deleteOglas(oglasId).subscribe(
-      response => {
-        console.log("USPJESNO OBRISANO");
-      }, error => {
-        console.log("NE RADI");
-      }
-    );
-  }
+    this.oglasService.deleteOglas(oglasId).subscribe();
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/mojiOglasi']);
+    });
 
+
+    // this.router.navigate(["/mojiOglasi"]);
+  }
 
   ngOnDestroy(): void {
     // @ts-ignore

@@ -1,0 +1,39 @@
+
+.container-fluid{
+  background-color: #031926;
+  color: white;
+}
+
+
+.navbar-inverse .navbar-brand {
+  color: #f4e9cd;
+}
+
+.navbar-inverse[_ngcontent-ltw-c16] .navbar-brand[_ngcontent-ltw-c16] {
+  color: #f4e9cd;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #f4e9cd;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  background-color: #468189;
+}
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
+
+
+/*a:hover {*/
+/*  color: red;*/
+/*  background-color: transparent;*/
+/*  text-decoration: underline;*/
+/*}*/
+
+/*a:active {*/
+/*  color: yellow;*/
+/*  background-color: transparent;*/
+/*  text-decoration: underline;*/
+/*}*/

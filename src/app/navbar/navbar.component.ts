@@ -19,10 +19,8 @@ export class NavbarComponent implements OnInit , OnDestroy{
     this.userSub =  this.authService.user.subscribe(
       user => {
         this.isLoggedIn = !!user;
-        console.log(this.isLoggedIn);
       }
     );
-    // this.userSub = this.authService.user.subscribe(user => this.user = user);
   }
 
   logoutUser(){

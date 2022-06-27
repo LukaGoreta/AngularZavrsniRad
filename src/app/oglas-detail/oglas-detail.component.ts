@@ -42,24 +42,27 @@ export class OglasDetailComponent implements OnInit, OnDestroy {
     this.paramsSubscription.unsubscribe();
   }
 
-    tmpSlikaOglasa: any;
-    createImageFromBlob(image: Blob){
+  tmpSlikaOglasa: any;
+  getImageFromService(idOglasa: number){
+    this.oglasService.getOglasImage(idOglasa)
+      .subscribe(data => {
+        this.createImageFromBlob(data);
+    })
+  }
 
+  createImageFromBlob(image: Blob){
     let reader = new FileReader();
-    reader.addEventListener("load", () =>{
-      this.tmpSlikaOglasa = reader.result;
-    }, false);
 
     if(image){
       reader.readAsDataURL(image);
     }
+
+    reader.addEventListener("load", () =>{
+      this.tmpSlikaOglasa = reader.result;
+    });
   }
 
-  getImageFromService(num: number){
-    this.oglasService.getOglasImage(num).subscribe(data => {
-      this.createImageFromBlob(data);
-    })
-  }
+
 
 
 }

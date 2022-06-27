@@ -10,23 +10,23 @@ import {Oglas} from "../oglas/oglas";
   styleUrls: ['./svi-oglasi.component.css']
 })
 export class SviOglasiComponent implements OnInit, OnDestroy {
-
   paramsSubscription: Subscription;
   private oglasId: number;
   sviOglasi: Oglas[] = [];
 
   constructor(private route: ActivatedRoute,private oglasService: OglasService) {
     this.paramsSubscription = this.route.params.subscribe();
-    // this.sviOglasi = this.oglasService.getOglasi();
-
-
   }
 
   ngOnInit(){
+
+    // this.oglasService.getOglasi().subscribe(( data:{oglas:Oglas[]}) => {
+    //   this.sviOglasi = data.oglas;
+    // });
+
     this.route.data.subscribe(
       (data: Data) => {
         this.sviOglasi = data['oglasi'];
-        console.log("sviOglasi: "+this.sviOglasi);
       }
     );
 
@@ -42,11 +42,11 @@ export class SviOglasiComponent implements OnInit, OnDestroy {
       })
     });
 
-    this.paramsSubscription = this.route.params.subscribe(
-      (params: Params) =>{
-        this.oglasId = +params["oglasId"];
-      }
-    );
+    // this.paramsSubscription = this.route.params.subscribe(
+    //   (params: Params) =>{
+    //     this.oglasId = +params["oglasId"];
+    //   }
+    // );
   }
 
   ngOnDestroy() {

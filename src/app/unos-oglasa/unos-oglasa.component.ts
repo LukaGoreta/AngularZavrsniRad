@@ -4,7 +4,7 @@ import {NgForm} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {KategorijaService} from "../kategorija.service";
 import {Kategorija} from "../kategorije/kategorija";
-import {ActivatedRoute, Data} from "@angular/router";
+import {ActivatedRoute, Data, Router} from "@angular/router";
 import {UploadOglasService} from "../upload-oglas.service";
 import {AuthService} from "../auth.service";
 
@@ -14,14 +14,11 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./unos-oglasa.component.css']
 })
 export class UnosOglasaComponent implements OnInit, OnDestroy {
-// @ViewChild('f') forma: NgForm; //alternativa za postanje forme
 
   public message: string;
   userFile: File ;
   imgURL:any;
   public imagePath: any;
-  kategorijaId: number;
-  // file: File = null;
 
   paramsSubscription: Subscription;
   sveKategorije: Kategorija[] = [];
@@ -29,7 +26,7 @@ export class UnosOglasaComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,private kategorijeService: KategorijaService
   ,private uploadOglasService: UploadOglasService, private http: HttpClient,
-              private authService:AuthService) {
+              private authService:AuthService, private router:Router) {
     this.paramsSubscription = this.route.params.subscribe();
   }
 
@@ -40,14 +37,6 @@ export class UnosOglasaComponent implements OnInit, OnDestroy {
       }
     )
   }
-
-  // // @ts-ignore
-  // onFileselected(event) {
-  //   console.log("jebote event");
-  //   this.file = event.target.files[0];
-  // }
-
-
 
 
   submitForm(f: NgForm) {
@@ -63,6 +52,10 @@ export class UnosOglasaComponent implements OnInit, OnDestroy {
       this.http.post('http://localhost:8080/oglas', formData).subscribe(
         (data)=>{}
       )
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/mojiOglasi']);
+    });
     }
 
   // @ts-ignore

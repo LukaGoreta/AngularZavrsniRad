@@ -36,7 +36,6 @@ import { UserOglasiComponent } from './user-oglasi/user-oglasi.component';
 import {UserOglasiResolver} from "./user-oglasi/user-oglasi-resolver.service";
 
 const appRoutes : Routes = [
-
   {path: '', redirectTo: 'pocetna', pathMatch: 'full'},
   {path: 'pocetna', component: PocetnaComponent,
     children:[

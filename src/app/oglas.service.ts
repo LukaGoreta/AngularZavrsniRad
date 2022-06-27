@@ -14,7 +14,7 @@ export class OglasService {
   oglasUrl = "http://localhost:8080/oglas";
   oglasKategorijaUrl = "http://localhost:8080/oglas/kategorija/";
   userOglasiUrl = "http://localhost:8080/oglas/user/";
-  brisanjeOglasaUrl = "http://localhost:8080/oglas/obrisi/"; //+idOglasa
+  brisanjeOglasaUrl = "http://localhost:8080/oglas/obrisi/";
 
   constructor(private http: HttpClient) {}
 
@@ -22,10 +22,7 @@ export class OglasService {
   oglas: Object;
 
   getOglasi():any{
-    this.http.get(this.oglasUrl).subscribe((oglasData)=> {
-      this.data = oglasData;
-    })
-    return this.data;
+    return this.http.get(this.oglasUrl);
   }
 
   getOglasRes():Observable<Oglas[]>{

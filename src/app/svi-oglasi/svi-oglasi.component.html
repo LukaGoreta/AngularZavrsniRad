@@ -1,36 +1,30 @@
-
 <div class="container" style="padding-top: 20Px;border-bottom: 1px solid black;">
-  <!--<p>Odabrana je kategorija oglasa : {{nazivKategorije}}</p>-->
-  <div class="row" *ngFor="let sviOglasi of sviOglasi async"
-       style="background-color: white; padding-top: 20px; margin-top: 10px;
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+  <div id="rowid" class="row" *ngFor="let oglas of sviOglasi"
+       style="padding-top: 20px; margin-top: 10px;
       "
   >
-
-    <a [routerLink]="[sviOglasi.oglasId]" style="color: #1787ae">
-      <h4 style="position:center;"> {{sviOglasi.naslov}}</h4>
-    </a>
-
-    <div class="col-lg-3 col-md-3 col-sm-12" style="height: 150px;">
-      <div class="row">
-      <span class="pull-left" style="position: absolute; left: 0px;">
-        <a [routerLink]="[sviOglasi.oglasId]">
-        <img
-          [src]="sviOglasi.imagePath"
-          alt="omg" class="img-responsive" style="max-height: 150px;">
-        </a>
-      </span>
+    <div  class="col-lg-3 col-md-3 col-sm-12">
+      <div class="row" id="slika">
+        <span class="pull-left" style="position: absolute; left: 0px;">
+          <a [routerLink]="[oglas.oglasId]">
+          <img
+            [src]="oglas.imagePath"
+            alt="omg" class="img-responsive" >
+          </a>
+        </span>
       </div>
-    </div>
-    <div class="col-lg-7 col-md-12 col-sm-12" style="height:100px;">
-      <p>{{sviOglasi.opis}}</p>
-      lokacija
-      datum unosa
-      broj
+      </div>
+      <div id="opis" class="col-lg-9 col-md-12 col-sm-12" >
+        <a [routerLink]="[oglas.oglasId]" style="color: #1787ae">
+          <h2 style="position:center;"> {{oglas.naslov}}</h2>
+        </a>
 
-    </div>
+        <p>{{oglas.opis}}</p>
+        <p>Prodavač: {{oglas.imeProdavaca}}</p>
+        <p>Telefon: {{oglas.telefon}}</p>
+        <p>Lokacija: {{oglas.lokacija}}</p>
+      </div>
+
   </div>
 </div>
 

@@ -37,7 +37,6 @@ export class RegistracijaComponent implements OnInit {
         this.error = error;
       }
     );
-    // this.success = "Uspješna registracija";
     form.resetForm();
   }
 
